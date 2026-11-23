@@ -99,6 +99,23 @@
     @apply opacity-0 pointer-events-none;
   }
 
+  /* ===== Footer ===== */
+  .footer {
+    @apply flex flex-col items-center justify-center gap-3 min-h-[50dvh] p-6 text-center bg-white;
+  }
+  .footer h2 {
+    @apply m-0 text-[1.875rem] font-semibold text-navy;
+  }
+  .footer p {
+    @apply m-0 text-navy-600;
+  }
+  .footer small {
+    @apply text-navy-400;
+  }
+  .footer-inner {
+    @apply flex flex-col items-center gap-3 max-w-2xl;
+  }
+
   /* ===== Header Components ===== */
   .topbar {
     @apply fixed inset-x-0 top-0 z-40 grid items-center gap-4 pointer-events-none text-white;

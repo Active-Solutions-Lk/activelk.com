@@ -1001,6 +1001,48 @@ body {
   opacity: 0;
 }
 
+/* ===== Footer ===== */
+
+.footer {
+  display: flex;
+  min-height: 50dvh;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  --tw-bg-opacity: 1;
+  background-color: rgb(255 255 255 / var(--tw-bg-opacity, 1));
+  padding: 1.5rem;
+  text-align: center;
+}
+
+.footer h2 {
+  margin: 0px;
+  font-size: 1.875rem;
+  font-weight: 600;
+  --tw-text-opacity: 1;
+  color: rgb(15 23 42 / var(--tw-text-opacity, 1));
+}
+
+.footer p {
+  margin: 0px;
+  --tw-text-opacity: 1;
+  color: rgb(71 85 105 / var(--tw-text-opacity, 1));
+}
+
+.footer small {
+  --tw-text-opacity: 1;
+  color: rgb(148 163 184 / var(--tw-text-opacity, 1));
+}
+
+.footer-inner {
+  display: flex;
+  max-width: 42rem;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+}
+
 /* ===== Header Components ===== */
 
 .topbar {
@@ -2456,12 +2498,20 @@ body {
   margin-bottom: 2rem;
 }
 
+.mt-10 {
+  margin-top: 2.5rem;
+}
+
 .mt-2 {
   margin-top: 0.5rem;
 }
 
 .mt-4 {
   margin-top: 1rem;
+}
+
+.mt-6 {
+  margin-top: 1.5rem;
 }
 
 .block {
@@ -2554,6 +2604,10 @@ body {
 
 .h-full {
   height: 100%;
+}
+
+.min-h-\[50dvh\] {
+  min-height: 50dvh;
 }
 
 .min-h-\[60vh\] {
@@ -2742,6 +2796,10 @@ body {
   gap: 0.5rem;
 }
 
+.gap-3 {
+  gap: 0.75rem;
+}
+
 .gap-4 {
   gap: 1rem;
 }
@@ -2850,6 +2908,11 @@ body {
   border-style: none;
 }
 
+.border-brand {
+  --tw-border-opacity: 1;
+  border-color: rgb(0 132 255 / var(--tw-border-opacity, 1));
+}
+
 .border-navy\/15 {
   border-color: rgb(15 23 42 / 0.15);
 }
@@ -2915,6 +2978,10 @@ body {
 
 .p-5 {
   padding: 1.25rem;
+}
+
+.p-6 {
+  padding: 1.5rem;
 }
 
 .p-8 {
@@ -2989,6 +3056,10 @@ body {
 
 .text-\[0\.95rem\] {
   font-size: 0.95rem;
+}
+
+.text-\[1\.875rem\] {
+  font-size: 1.875rem;
 }
 
 .text-\[clamp\(2\.2rem\2c 4\.5vw\2c 3\.5rem\)\] {
@@ -3290,6 +3361,10 @@ body {
 
 .\[transform-style\:preserve-3d\] {
   transform-style: preserve-3d;
+}
+
+.hover\:bg-brand\/5:hover {
+  background-color: rgb(0 132 255 / 0.05);
 }
 
 .hover\:bg-navy\/5:hover {
