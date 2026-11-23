@@ -15,6 +15,25 @@
 }
 
 @layer components {
+  /* ===== Inner Page Layouts ===== */
+  .page-container {
+    @apply max-w-[1200px] mx-auto px-6;
+    padding-top: 120px;
+    padding-bottom: 80px;
+  }
+  .modern-grid {
+    @apply grid gap-8 mt-10;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  }
+  .standard-card {
+    @apply bg-white border border-navy/[0.08] rounded-card p-8 flex flex-col gap-4;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+  }
+  .standard-card:hover {
+    @apply -translate-y-1 shadow-card-hover;
+  }
+
   /* Accessibility Skip Link */
   .skip {
     @apply absolute left-[-999px] focus:left-2 focus:top-2 focus:z-50 focus:bg-white focus:px-3 focus:py-2;
