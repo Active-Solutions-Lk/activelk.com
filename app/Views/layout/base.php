@@ -13,8 +13,6 @@
   
   <!-- Core Styles -->
   <link rel="stylesheet" href="<?= asset('assets/css/app.css') ?>">
-  <link rel="stylesheet" href="<?= asset('assets/css/style.css') ?>">
-  <link rel="stylesheet" href="<?= asset('assets/css/animations.css') ?>">
   
   <!-- GSAP 3, Lenis & Three.js for Modern Smooth 3D Interactions -->
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js" defer></script>
