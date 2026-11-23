@@ -34,6 +34,39 @@
     @apply -translate-y-1 shadow-card-hover;
   }
 
+  /* ===== 3D Effects, Transitions & Canvas ===== */
+  .as-3d-card, .as-3d-hero {
+    transform-style: preserve-3d;
+    @apply transition-[box-shadow,border-color] duration-300 rounded-card;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+  }
+  .as-3d-card:hover {
+    @apply shadow-3d;
+  }
+
+  #page-overlay {
+    @apply fixed inset-0 z-[9999] pointer-events-none;
+    background: #081225;
+    transform: scaleY(0);
+  }
+
+  #hero-three {
+    @apply absolute inset-0 w-full h-full z-0 pointer-events-none opacity-70;
+  }
+
+  .as-char {
+    @apply inline-block will-change-[transform,opacity];
+  }
+
+  .mesh-gradient-bg {
+    background-color: #0b1120;
+    background-image:
+      radial-gradient(at 0% 0%, rgba(14, 165, 233, 0.25) 0px, transparent 50%),
+      radial-gradient(at 100% 100%, rgba(99, 102, 241, 0.2) 0px, transparent 50%),
+      radial-gradient(at 50% 50%, rgba(15, 23, 42, 0.6) 0px, transparent 100%);
+  }
+
   /* Accessibility Skip Link */
   .skip {
     @apply absolute left-[-999px] focus:left-2 focus:top-2 focus:z-50 focus:bg-white focus:px-3 focus:py-2;
