@@ -25,7 +25,7 @@ return [
         'features'  => [['shield', 'Reliable', 'Solutions'], ['headset', 'Dedicated', 'Support'], ['bulb', 'Innovative', 'Technology']],
         'primary'   => ['Explore Solutions', 1],   // [label, section index to scroll to]
         'secondary' => 'Watch Overview',           // auto-scrolls through the whole experience
-        'contact'   => 'Contact Us',
+        'contact'   => 'Re-Seller Register',
     ],
     // goto = section index in the scroll experience; href is used otherwise.
     // About / Services / Projects point to #contact for now: change them to your real pages.

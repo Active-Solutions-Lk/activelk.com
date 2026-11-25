@@ -72,3 +72,16 @@ CREATE TABLE IF NOT EXISTS site_settings (
   `value`     TEXT,
   updated_at  TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+CREATE TABLE IF NOT EXISTS reseller_leads (
+  id            INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+  company_name  VARCHAR(150) NOT NULL,
+  contact_name  VARCHAR(120) NOT NULL,
+  email         VARCHAR(255) NOT NULL,
+  phone         VARCHAR(30)  NOT NULL,
+  website       VARCHAR(255),
+  message       TEXT,
+  status        ENUM('new','reviewing','approved','rejected') DEFAULT 'new',
+  ip_address    VARCHAR(45),
+  created_at    TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;

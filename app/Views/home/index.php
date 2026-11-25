@@ -84,4 +84,5 @@ $scriptsExtra = '
 <script src="' . asset('assets/js/scroll-video.js') . '" defer></script>
 ';
 
+$isHome = true;
 require dirname(__DIR__) . '/layout/base.php';

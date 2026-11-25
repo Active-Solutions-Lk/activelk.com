@@ -13,6 +13,8 @@ return [
     ['GET',  '/projects/{slug}',   'ProjectController',    'show'],
     ['GET',  '/contact',           'ContactController',    'index'],
     ['POST', '/contact',           'ContactController',    'store'],
+    ['GET',  '/reseller-register', 'ResellerController',   'index'],
+    ['POST', '/reseller-register', 'ResellerController',   'store'],
 
     // API endpoints
     ['GET',  '/api/v1/health',     'Api\HealthController',    'ping'],

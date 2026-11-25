@@ -210,7 +210,7 @@
   }
 
   .contact-btn {
-    @apply justify-self-end inline-flex items-center gap-[0.7rem] rounded-pill text-white no-underline font-medium transition-[background,color] duration-300;
+    @apply justify-self-end inline-flex items-center gap-[0.7rem] rounded-pill text-white no-underline font-medium whitespace-nowrap transition-[background,color,box-shadow,border-color] duration-300;
     padding: 0.9rem 1.5rem;
     font-size: 0.95rem;
     background: rgba(24, 16, 10, 0.74);
@@ -234,11 +234,16 @@
     filter: brightness(0);
   }
   .topbar.on-light .mainnav > ul,
-  .topbar.on-light .contact-btn,
   .topbar.on-light .nav-toggle {
     background: rgba(255, 255, 255, 0.92);
     border-color: rgba(15, 23, 42, 0.12);
     color: #0f172a;
+  }
+  .topbar.on-light .contact-btn {
+    background: linear-gradient(135deg, #2a8bff, #0a5cff);
+    border-color: transparent;
+    color: #fff;
+    box-shadow: 0 6px 20px rgba(10, 92, 255, 0.28);
   }
   .topbar.on-light .navlink {
     color: #0f172a;
@@ -256,7 +261,8 @@
     border-color: rgba(15, 23, 42, 0.1);
   }
   .topbar.on-light .contact-btn:hover {
-    background: #fff;
+    background: linear-gradient(135deg, #1a7aff, #0047e0);
+    box-shadow: 0 8px 24px rgba(10, 92, 255, 0.4);
   }
 
   /* Responsive Mobile Header */

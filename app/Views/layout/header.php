@@ -9,7 +9,7 @@ $link = function (array $it): string {
     return 'href="' . e($it['href'] ?? '#') . '"' . $goto;
 };
 ?>
-<header class="topbar" id="topbar">
+<header class="topbar<?= empty($isHome) ? ' on-light' : '' ?>" id="topbar">
   <a class="logo" href="<?= url('/') ?>" data-goto="0" aria-label="Active Solutions – Home">
     <img src="<?= asset('assets/img/logo.png') ?>" alt="Active Solutions">
   </a>
@@ -39,9 +39,9 @@ $link = function (array $it): string {
     </ul>
   </nav>
 
-  <a class="contact-btn" href="<?= url('/contact') ?>">
-    <?= icon('mail') ?>
-    <?= e($hero['contact'] ?? 'Contact Us') ?>
+  <a class="contact-btn" href="<?= url('/reseller-register') ?>">
+    <?= icon('sparkle') ?>
+    <?= e($hero['contact'] ?? 'Re-Seller Register') ?>
     <?= icon('arrow') ?>
   </a>
 </header>
