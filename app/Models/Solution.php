@@ -23,6 +23,7 @@ class Solution extends Model {
                 $row['objX'] = $row['obj_x'] ?? 50;
                 $row['cta'] = [$row['cta_label'] ?? 'Learn More', $row['cta_href'] ?? '#contact'];
                 $row['id'] = $row['slug'];
+                $row['label'] = $row['label'] ?? $row['badge'] ?? $row['title'] ?? ('Section ' . ($row['sort_order'] ?? 0));
                 return $row;
             }, $rows);
         } catch (\Throwable $e) {

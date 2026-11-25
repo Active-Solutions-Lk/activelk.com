@@ -14,5 +14,9 @@
     "files": [
       "lib/helpers.php"
     ]
+  },
+  "scripts": {
+    "migrate": "php database/migrate.php",
+    "serve": "php -S localhost:8000 -t public"
   }
 }

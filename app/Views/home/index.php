@@ -10,8 +10,8 @@ foreach ($sections as $s) {
 $trackVh = $total + $cfg['site']['tail_vh'];
 
 $clientCfg = [
-    'sections' => array_map(fn($s) => ['t' => $s['t'], 'vh' => $s['vh'], 'objX' => $s['objX']], $sections),
-    'tailVh'   => $cfg['site']['tail_vh'],
+    'sections' => array_map(fn($s) => ['t' => $s['t'] ?? [0,0,1,2], 'vh' => $s['vh'] ?? [0,100,100], 'objX' => $s['objX'] ?? $s['obj_x'] ?? 50], $sections),
+    'tailVh'   => $cfg['site']['tail_vh'] ?? 40,
     'src'      => ['desktop' => asset($cfg['video']['desktop']), 'mobile' => asset($cfg['video']['mobile'])],
 ];
 
@@ -20,7 +20,7 @@ ob_start();
   <!-- Navigation Dots for the Scroll Experience -->
   <nav class="dots" aria-label="Sections">
     <?php foreach ($sections as $i => $s): ?>
-      <button type="button" class="dot<?= $i === 0 ? ' is-active' : '' ?>" data-i="<?= $i ?>" aria-label="<?= e($s['label']) ?>"></button>
+      <button type="button" class="dot<?= $i === 0 ? ' is-active' : '' ?>" data-i="<?= $i ?>" aria-label="<?= e($s['label'] ?? $s['badge'] ?? $s['title'] ?? ('Section ' . ($i + 1))) ?>"></button>
     <?php endforeach; ?>
   </nav>
 
@@ -29,7 +29,7 @@ ob_start();
       <div class="stage">
         <canvas id="hero-three"></canvas>
         <video id="vid" muted playsinline preload="auto" poster="<?= asset($cfg['video']['poster']) ?>"
-               style="object-position:<?= (int)$sections[0]['objX'] ?>% 50%"></video>
+               style="object-position:<?= (int)($sections[0]['objX'] ?? $sections[0]['obj_x'] ?? 50) ?>% 50%"></video>
 
         <div class="hero-corner-tl" data-hero aria-hidden="true"></div>
         <div class="hero-corner-br" data-hero aria-hidden="true"></div>

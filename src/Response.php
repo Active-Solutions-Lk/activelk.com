@@ -50,6 +50,14 @@ class Response {
         return $this;
     }
 
+    public function getContent(): string {
+        return $this->content;
+    }
+
+    public function __toString(): string {
+        return $this->content;
+    }
+
     public function redirect(string $url, int $code = 302): self {
         $this->status = $code;
         $this->headers['Location'] = $url;

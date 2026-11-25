@@ -22,7 +22,7 @@ $paths = [
     'bulb'    => '<path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5"/><path d="M9 18h6"/><path d="M10 22h4"/>',
     'play'    => '<polygon points="7 4 20 12 7 20 7 4" fill="currentColor"/>',
 ];
-$ic = fn(string $n): string => '<svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' . $paths[$n] . '</svg>';
+$ic = fn(string $n): string => '<svg class="ic" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' . $paths[$n] . '</svg>';
 $link = function (array $it) use ($e): string {
     $goto = isset($it['goto']) ? ' data-goto="' . (int)$it['goto'] . '"' : '';
     return 'href="' . $e($it['href'] ?? '#') . '"' . $goto;
@@ -45,7 +45,7 @@ $clientCfg = [
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="preload" as="image" href="<?= $e($cfg['video']['poster']) ?>">
-  <link rel="stylesheet" href="<?= $e($ver('assets/css/style.css')) ?>">
+  <link rel="stylesheet" href="<?= $e($ver('assets/css/app.css')) ?>">
 </head>
 <body>
   <a class="skip" href="#contact">Skip to contact</a>
@@ -74,7 +74,7 @@ $clientCfg = [
 
   <nav class="dots" aria-label="Sections">
     <?php foreach ($sections as $i => $s): ?>
-      <button type="button" class="dot<?= $i === 0 ? ' is-active' : '' ?>" data-i="<?= $i ?>" aria-label="<?= $e($s['label']) ?>"></button>
+      <button type="button" class="dot<?= $i === 0 ? ' is-active' : '' ?>" data-i="<?= $i ?>" aria-label="<?= $e($s['label'] ?? $s['badge'] ?? $s['title'] ?? ('Section ' . ($i + 1))) ?>"></button>
     <?php endforeach; ?>
   </nav>
 

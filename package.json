@@ -5,7 +5,9 @@
   "scripts": {
     "dev": "npx tailwindcss -i ./resources/css/app.css -o ./public/assets/css/app.css --watch",
     "build": "npx tailwindcss -i ./resources/css/app.css -o ./public/assets/css/app.css --minify",
-    "sync": "copy /Y public\\assets\\css\\app.css assets\\css\\app.css"
+    "sync": "copy /Y public\\assets\\css\\app.css assets\\css\\app.css",
+    "migrate": "php database/migrate.php",
+    "serve": "php -S localhost:8000 -t public"
   },
   "devDependencies": {
     "@tailwindcss/forms": "^0.5.7",
