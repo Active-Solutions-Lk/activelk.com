@@ -105,13 +105,25 @@
       const fin = i === 0 ? 1 : clamp((x - (sp.h0 - 25)) / 35);
       const fout = i === lastIdx ? 1 : clamp(1 - (x - (sp.h1 - 10)) / 30);
       const o = Math.min(fin, fout), el = cards[i];
-      el.style.opacity = o;
-      el.style.transform = `translateY(${(1 - fin) * 24 - (1 - fout) * 16}px)`;
-      el.style.pointerEvents = o > 0.5 ? 'auto' : 'none';
-      if (i === 0) follow.forEach((f) => {         // hero shade / wave / scroll cue fade with the hero text
-        f.style.opacity = o;
-        if (f.classList.contains('scroll-cue')) f.style.pointerEvents = o > 0.5 ? 'auto' : 'none';
-      });
+      if (i === 0) {
+        // Hero section: Delegate text/element animation to GSAP HeroScrollFX timeline
+        const exitProgress = clamp(1 - fout);
+        if (window.HeroScrollFX && window.HeroScrollFX.setScrollProgress) {
+          window.HeroScrollFX.setScrollProgress(exitProgress);
+        } else {
+          el.style.opacity = o;
+          el.style.transform = `translateY(${(1 - fin) * 24 - (1 - fout) * 16}px)`;
+        }
+        el.style.pointerEvents = o > 0.5 ? 'auto' : 'none';
+        follow.forEach((f) => {
+          f.style.opacity = o;
+          if (f.classList.contains('scroll-cue')) f.style.pointerEvents = o > 0.5 ? 'auto' : 'none';
+        });
+      } else {
+        el.style.opacity = o;
+        el.style.transform = `translateY(${(1 - fin) * 24 - (1 - fout) * 16}px)`;
+        el.style.pointerEvents = o > 0.5 ? 'auto' : 'none';
+      }
     });
     let idx = spans.findIndex((sp) => x < sp.u1);
     if (idx === -1) idx = lastIdx;
@@ -120,9 +132,20 @@
       vid.style.objectPosition = cfg.sections[idx].objX + '% 50%';
       topbar.classList.toggle('on-light', idx > 0);
       dots.forEach((d, i) => { d.classList.toggle('is-active', i === idx); d.toggleAttribute('aria-current', i === idx); });
+
+      // Update bottom-left slider counter & fill bar & dots
+      const currEl = $('#hc-curr');
+      const fillEl = $('#hc-fill');
+      if (currEl) currEl.textContent = String(idx + 1).padStart(2, '0');
+      if (fillEl) fillEl.style.width = (((idx + 1) / spans.length) * 100) + '%';
+      $$('.hc-dot').forEach((d, dIdx) => d.classList.toggle('is-active', dIdx === idx));
     }
     if (!raf) raf = requestAnimationFrame(tick);
   };
+
+  // Run initial state after layout is painted so trackTop() is correct
+  // Using requestAnimationFrame ensures the DOM is fully laid out before reading positions
+  requestAnimationFrame(onScroll);
 
   // iOS Safari only allows seeking after one user-initiated play()
   const unlock = () => vid.play().then(() => { vid.pause(); last = -1; onScroll(); }).catch(() => {});

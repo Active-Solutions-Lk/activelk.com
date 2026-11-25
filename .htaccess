@@ -1,8 +1,5 @@
-# Apache / Hostinger: correct MIME + caching for static assets
-AddType video/mp4 .mp4
-DirectoryIndex index.php
-<IfModule mod_headers.c>
-  <FilesMatch "\.(mp4|jpg|css|js)$">
-    Header set Cache-Control "public, max-age=2592000"
-  </FilesMatch>
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteRule ^$ public/ [L]
+    RewriteRule (.*) public/$1 [L]
 </IfModule>
