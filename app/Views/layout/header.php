@@ -3,10 +3,26 @@
 /** @var array $hero */
 $navItems = config('content.nav', []);
 $hero     = config('content.hero', []);
+$currentPath = (new \Src\Request())->path();
+
+$isNavActive = function (array $it) use ($currentPath): bool {
+    $href = $it['href'] ?? '';
+    if ($href === '' || str_starts_with($href, '#')) {
+        return false;
+    }
+    if ($href === '/') {
+        return $currentPath === '/';
+    }
+    return $currentPath === $href || str_starts_with($currentPath, rtrim($href, '/') . '/');
+};
 
 $link = function (array $it): string {
     $goto = isset($it['goto']) ? ' data-goto="' . (int)$it['goto'] . '"' : '';
-    return 'href="' . e($it['href'] ?? '#') . '"' . $goto;
+    $href = $it['href'] ?? '#';
+    if (str_starts_with($href, '/')) {
+        $href = url($href);
+    }
+    return 'href="' . e($href) . '"' . $goto;
 };
 ?>
 <header class="topbar<?= empty($isHome) ? ' on-light' : '' ?>" id="topbar">
@@ -22,7 +38,7 @@ $link = function (array $it): string {
     <ul>
       <?php foreach ($navItems as $item): $kids = $item['children'] ?? []; ?>
         <li<?= $kids ? ' class="has-sub"' : '' ?>>
-          <a class="navlink<?= !empty($item['active']) ? ' is-active' : '' ?>" <?= $link($item) ?>>
+          <a class="navlink<?= $isNavActive($item) ? ' is-active' : '' ?>" <?= $link($item) ?>>
             <?= !empty($item['icon']) ? icon($item['icon']) : '' ?>
             <?= e($item['label']) ?>
             <?= $kids ? icon('chevron') : '' ?>

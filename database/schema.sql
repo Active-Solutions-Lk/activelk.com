@@ -61,6 +61,7 @@ CREATE TABLE IF NOT EXISTS contact_leads (
   company     VARCHAR(120),
   phone       VARCHAR(30),
   interest    VARCHAR(80),
+  reason      VARCHAR(40),
   message     TEXT,
   source_page VARCHAR(255),
   ip_address  VARCHAR(45),

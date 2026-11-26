@@ -13,8 +13,9 @@ class SaveContactLead {
             'company'     => trim((string)($data['company'] ?? '')),
             'phone'       => trim((string)($data['phone'] ?? '')),
             'interest'    => trim((string)($data['interest'] ?? 'general')),
+            'reason'      => trim((string)($data['reason'] ?? 'sales')),
             'message'     => trim((string)($data['message'] ?? '')),
-            'source_page' => trim((string)($data['source_page'] ?? '')),
+            'source_page' => trim((string)($data['source_page'] ?? '/contact')),
             'ip_address'  => $ip ?? ($_SERVER['REMOTE_ADDR'] ?? null),
         ]);
     }

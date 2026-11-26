@@ -25,7 +25,7 @@ class SaveResellerLead {
         }
         $logFile = $logDir . '/resellers.log';
         $entry = sprintf(
-            "[%s] Reseller Application: %s (%s) <%s> | Phone: %s | Type: %s | Web: %s | Message: %s\n",
+            "[%s] Reseller Application: %s (%s) <%s> | Phone: %s | Web: %s | Message: %s\n",
             date('Y-m-d H:i:s'),
             $data['company_name'] ?? '',
             $data['contact_name'] ?? '',

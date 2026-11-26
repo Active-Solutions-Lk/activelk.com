@@ -17,9 +17,10 @@ class ValidateContactForm {
         $name    = trim((string)($data['name'] ?? ''));
         $email   = trim((string)($data['email'] ?? ''));
         $company = trim((string)($data['company'] ?? ''));
-        $phone   = trim((string)($data['phone'] ?? ''));
+        $phone    = trim((string)($data['phone'] ?? ''));
         $interest = trim((string)($data['interest'] ?? 'general'));
-        $message = trim((string)($data['message'] ?? ''));
+        $reason   = strtolower(trim((string)($data['reason'] ?? 'sales')));
+        $message  = trim((string)($data['message'] ?? ''));
 
         if ($name === '') {
             $this->errors['name'] = 'Your name is required.';
@@ -46,6 +47,13 @@ class ValidateContactForm {
             $interest = 'general';
         }
 
+        $validReasons = ['sales', 'support', 'feedback'];
+        if ($reason === '') {
+            $reason = 'sales';
+        } elseif (!in_array($reason, $validReasons, true)) {
+            $this->errors['reason'] = 'Please select a valid reason (Sales, Support, or Feedback).';
+        }
+
         return [
             'isValid' => empty($this->errors),
             'errors'  => $this->errors,
@@ -55,6 +63,7 @@ class ValidateContactForm {
                 'company'  => htmlspecialchars($company, ENT_QUOTES, 'UTF-8'),
                 'phone'    => $phone,
                 'interest' => $interest,
+                'reason'   => $reason,
                 'message'  => htmlspecialchars($message, ENT_QUOTES, 'UTF-8'),
             ]
         ];

@@ -30,19 +30,19 @@ return [
     // goto = section index in the scroll experience; href is used otherwise.
     // About / Services / Projects point to #contact for now: change them to your real pages.
     'nav' => [
-        ['label' => 'Home', 'goto' => 0, 'icon' => 'home', 'active' => true],
+        ['label' => 'Home', 'href' => '/', 'goto' => 0, 'icon' => 'home'],
         ['label' => 'About', 'href' => '#contact'],
         ['label' => 'Services', 'href' => '#contact', 'children' => [
             ['label' => 'Consulting & design', 'href' => '#contact'],
             ['label' => 'Installation & integration', 'href' => '#contact'],
             ['label' => 'Support & maintenance', 'href' => '#contact']]],
-        ['label' => 'Solutions', 'href' => '#', 'goto' => 1, 'children' => [
+        ['label' => 'Solutions', 'href' => '/solutions', 'goto' => 1, 'children' => [
             ['label' => 'Storage (Synology NAS)', 'goto' => 1],
             ['label' => 'Switching (BDCOM)', 'goto' => 2],
             ['label' => 'Routing (DrayTek)', 'goto' => 3],
             ['label' => 'SYNALYZE log analytics', 'goto' => 4]]],
-        ['label' => 'Projects', 'href' => '#contact'],
-        ['label' => 'Contact', 'href' => '#contact'],
+        ['label' => 'Projects', 'href' => '/projects'],
+        ['label' => 'Contact', 'href' => '/contact'],
     ],
     'sections' => [
         ['id' => 'intro', 'label' => 'Welcome', 'side' => 'left', 'tone' => 'dark', 'objX' => 50,

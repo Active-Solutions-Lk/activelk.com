@@ -24,7 +24,9 @@ INSERT INTO site_settings (`key`, `value`)
 VALUES
   ('site_title', 'Active Solutions | Value Added Distributor'),
   ('site_description', 'Storage, networking and security solutions from the brands businesses trust.'),
-  ('contact_email', 'info@activesolutions.lk'),
+  ('contact_email', 'sales@activelk.com'),
+  ('contact_phone', '011 2 818 691'),
+  ('head_office_address', '32/2-2/1, Nandimithra Place, Colombo 06, Sri Lanka'),
   ('hero_badge', 'Value Added Distributor'),
   ('hero_tagline', 'Storage, networking and security solutions from the brands businesses trust.')
 ON DUPLICATE KEY UPDATE `value`=VALUES(`value`);
